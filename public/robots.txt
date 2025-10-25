@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nathapamglobal.co.uk/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /settings/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /visa-information
+Allow: /apply-now
+Allow: /testimonials
+Allow: /faq
+Allow: /contact
+
+# Crawl delay
+Crawl-delay: 1
