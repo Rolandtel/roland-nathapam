@@ -62,7 +62,7 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-blue-500" onclick="scrollToCategory('general')">
+            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-blue-500 transform hover:-translate-y-1" onclick="scrollToCategory('general')">
                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                     <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -72,7 +72,7 @@
                 <p class="text-gray-600 text-sm">Basic visa information and requirements</p>
             </div>
             
-            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-green-500" onclick="scrollToCategory('application')">
+            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-green-500 transform hover:-translate-y-1" onclick="scrollToCategory('application')">
                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                     <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -82,7 +82,7 @@
                 <p class="text-gray-600 text-sm">Step-by-step application guidance</p>
             </div>
             
-            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-purple-500" onclick="scrollToCategory('documents')">
+            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-purple-500 transform hover:-translate-y-1" onclick="scrollToCategory('documents')">
                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                     <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -92,7 +92,7 @@
                 <p class="text-gray-600 text-sm">Required documents and preparation</p>
             </div>
             
-            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-orange-500" onclick="scrollToCategory('processing')">
+            <div class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-l-4 border-orange-500 transform hover:-translate-y-1" onclick="scrollToCategory('processing')">
                 <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
                     <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -106,10 +106,10 @@
 </section>
 
 <!-- FAQ Sections -->
-<section class="py-16 bg-white">
+<section class="py-16 bg-white" id="faq-sections">
     <div class="container mx-auto px-6">
         <!-- General Questions -->
-        <div id="general" class="mb-16">
+        <div id="general" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
                 <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
                     <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,15 +121,17 @@
             
             <div class="space-y-4">
                 @foreach($generalFaqs as $index => $faq)
-                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200" onclick="toggleFaq('general-{{ $index }}')">
-                        <span class="font-semibold text-gray-800">{{ $faq['question'] }}</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" id="general-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset" onclick="toggleFaq('general-{{ $index }}')">
+                        <span class="font-semibold text-gray-800 pr-4">{{ $faq['question'] }}</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" id="general-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="px-6 pb-4 hidden" id="general-{{ $index }}-content">
-                        <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        <div class="pt-2 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -137,7 +139,7 @@
         </div>
 
         <!-- Application Process -->
-        <div id="application" class="mb-16">
+        <div id="application" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
                 <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
                     <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,15 +151,17 @@
             
             <div class="space-y-4">
                 @foreach($applicationFaqs as $index => $faq)
-                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200" onclick="toggleFaq('application-{{ $index }}')">
-                        <span class="font-semibold text-gray-800">{{ $faq['question'] }}</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" id="application-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-inset" onclick="toggleFaq('application-{{ $index }}')">
+                        <span class="font-semibold text-gray-800 pr-4">{{ $faq['question'] }}</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" id="application-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="px-6 pb-4 hidden" id="application-{{ $index }}-content">
-                        <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        <div class="pt-2 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -165,7 +169,7 @@
         </div>
 
         <!-- Documents & Requirements -->
-        <div id="documents" class="mb-16">
+        <div id="documents" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
                 <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
                     <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -173,19 +177,21 @@
                     </svg>
                 </div>
                 Documents & Requirements
-            </div>
+            </h2>
             
             <div class="space-y-4">
                 @foreach($documentFaqs as $index => $faq)
-                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200" onclick="toggleFaq('documents-{{ $index }}')">
-                        <span class="font-semibold text-gray-800">{{ $faq['question'] }}</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" id="documents-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-inset" onclick="toggleFaq('documents-{{ $index }}')">
+                        <span class="font-semibold text-gray-800 pr-4">{{ $faq['question'] }}</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" id="documents-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="px-6 pb-4 hidden" id="documents-{{ $index }}-content">
-                        <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        <div class="pt-2 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -193,7 +199,7 @@
         </div>
 
         <!-- Processing & Timeline -->
-        <div id="processing" class="mb-16">
+        <div id="processing" class="mb-16 scroll-mt-24">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 flex items-center">
                 <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mr-3">
                     <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,15 +211,17 @@
             
             <div class="space-y-4">
                 @foreach($processingFaqs as $index => $faq)
-                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200" onclick="toggleFaq('processing-{{ $index }}')">
-                        <span class="font-semibold text-gray-800">{{ $faq['question'] }}</span>
-                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" id="processing-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-inset" onclick="toggleFaq('processing-{{ $index }}')">
+                        <span class="font-semibold text-gray-800 pr-4">{{ $faq['question'] }}</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200 flex-shrink-0" id="processing-{{ $index }}-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="px-6 pb-4 hidden" id="processing-{{ $index }}-content">
-                        <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        <div class="pt-2 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed">{{ $faq['answer'] }}</p>
+                        </div>
                     </div>
                 </div>
                 @endforeach
@@ -223,25 +231,25 @@
 </section>
 
 <!-- Still Have Questions -->
-<section class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+<section class="py-16 bg-gradient-to-r from-blue-600 to-green-600 text-white">
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Still Have Questions?</h2>
         <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Can't find the answer you're looking for? Our expert consultants are here to help you with personalized guidance.
+            Our visa experts are here to help you with personalized guidance
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('contact') }}" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 flex items-center justify-center">
+            <a href="{{ route('contact') }}" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                Get Free Consultation
+            </a>
+            <a href="{{ route('contact') }}" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                 </svg>
                 Contact Us
-            </a>
-            <a href="tel:+447432404502" class="bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors duration-200 flex items-center justify-center border-2 border-blue-400">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                </svg>
-                Call Now
             </a>
         </div>
     </div>
@@ -261,11 +269,18 @@ function toggleFaq(id) {
     }
 }
 
-function scrollToCategory(category) {
-    document.getElementById(category).scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-    });
+function scrollToCategory(categoryId) {
+    const element = document.getElementById(categoryId);
+    if (element) {
+        const headerOffset = 120; // Account for fixed header and extra spacing
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    }
 }
 </script>
 @endsection
